@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cucumber Feature Execution result</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/public/stylesheets/bootstrap.css">
+        <style type="text/css">
+	      body {
+	        padding-top: 60px;
+	        padding-bottom: 40px;
+	      }
+	      .sidebar-nav {
+	        padding: 9px 0;
+	      }
+	    </style>
+        <style> 
+    .passed {
+      color: green;
+    }
+    .skipped {
+      color: cyan;
+    }
+    .failed {
+      color: red;
+    }
+    
+    .error {
+      color: red;
+    }
+  </style>
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+      		<div class="navbar-inner">
+        		<div class="container-fluid">          			          			
+          			<a class="brand" href="/@cukes">Cucumber Runner</a>
+      				<div class="nav-collapse">
+        				<ul class="nav">
+          					<li class="active"><a href="/@cukes"><i class="icon-home icon-white"></i> Home </a></li>
+          					        				</ul>        				
+      				</div>      			
+        		</div>
+      		</div>
+		</div>
+		
+        <div class="container-fluid">
+      		<div class="row-fluid">          
+                
+                                                                                                                                                                                     
+
+
+<div id="errors" style="visibility:hidden; display: none;">
+</div>
+
+<div class="row-fluid">
+	<div class="span12">
+	    <a href="/@cukes/feature/run/ATM.feature" class="btn">Run...</a>
+	    <hr/> 
+        <p id="result" class="result"></p>
+        	</div>
+</div>
+
+	            
+          	</div>      
+      		<hr>
+      		<footer></footer>
+    	</div>
+	        	    	
+    	    	
+    	<script src="/public/javascripts/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>        
+            
+    <script src="/public/javascripts/ICanHaz.min.js"></script>
+
+    <script id="executionResult" type="text/html">
+        {{> tags}}
+        {{> feature}}
+        {{> scenarios}}
+    </script>
+
+    <script id="tags" type="text/html">
+        <p>
+        {{#tags}}            
+            <span class="label label-info">{{name}}</span>
+        {{/tags}}
+        {{^tags}}
+           This feature as no Tags.
+        {{/tags}}
+        </p>            
+    </script>
+    
+    <script id="feature" type="text/html">
+        <h3><a href="/@cukes/feature/ATM.feature">Feature: {{name}}</a></h3>
+        <p>{{#formatDescription}} {{description}} {{/formatDescription}}</p>
+    </script>
+    
+    <script id="scenarios" type="text/html">
+        <p>                        
+            {{#elements}}
+                <p>
+                    <ul>
+                        <li><h4>ScenarioOutline: : {{ name }} <small>&#35;{{uri}}:{{line}}</small> {{{totalElapsedTime}}}</h4></li>
+                        <ul>
+                        {{#steps}}
+                            <li>
+                                <span class="{{result.status}}"><b>{{ keyword }}</b> {{{highlightStep}}}</span> 
+                                {{#match}}<small>&#35;{{location}}</small>{{/match}}
+                                                                <small><i>&nbsp;{{{durationInMillis}}}</i></small>
+                                {{#hasErrors}}
+                                {{{errorDetail}}
+                                {{/hasErrors}}
+                            </li>
+                        {{/steps}}
+                        </ul>                     
+                    </ul>                    
+                    {{#isScenarioOutline}}
+                    <b>Examples:</b>
+                    {{/isScenarioOutline}}
+                    <hr/>
+                <p>                
+            {{/elements}}
+        </p>        
+    </script>
+    
+    <script type="text/javascript">
+    $(document).ready(function(){
+        var report = [{"id":"account-holder-withdraws-cash","tags":[{"name":"@prod","line":1},{"name":"@v1.0","line":1},{"name":"@mmf","line":1}],"description":"As an Account Holder\nI want to withdraw cash from an ATM\nSo that I can get money when the bank is closed","name":"Account Holder withdraws cash","keyword":"Feature","line":2,"elements":[{"id":"account-holder-withdraws-cash;account-has-sufficient-funds","description":"","name":"Account has sufficient funds","keyword":"Scenario Outline","line":7,"steps":[{"name":"the account balance is \u003caccount_balance\u003e","keyword":"Given ","line":8},{"name":"the card is valid","keyword":"And ","line":9},{"name":"the machine contains \u003catm_available\u003e","keyword":"And ","line":10},{"name":"the Account Holder requests \u003crequest\u003e","keyword":"When ","line":11},{"name":"the ATM should dispense \u003cresult\u003e","keyword":"Then ","line":12},{"name":"the account balance should be \u003cnewBalance\u003e","keyword":"And ","line":13},{"name":"the card should be returned","keyword":"And ","line":14}],"examples":[{"id":"account-holder-withdraws-cash;account-has-sufficient-funds;","description":"","name":"","keyword":"Examples","line":16,"rows":[{"id":"account-holder-withdraws-cash;account-has-sufficient-funds;;1","cells":["account_balance","atm_available","request","result","newBalance"],"line":17},{"id":"account-holder-withdraws-cash;account-has-sufficient-funds;;2","cells":["100","100","20","20","80"],"line":18},{"id":"account-holder-withdraws-cash;account-has-sufficient-funds;;3","cells":["100","100","30","30","70"],"line":19},{"id":"account-holder-withdraws-cash;account-has-sufficient-funds;;4","cells":["100","100","1","1","99"],"line":20}]}],"type":"scenario_outline"},{"id":"account-holder-withdraws-cash;account-has-sufficient-funds;;2","tags":[{"name":"@v1.0","line":1},{"name":"@prod","line":1},{"name":"@mmf","line":1}],"description":"","name":"Account has sufficient funds","keyword":"Scenario Outline","line":18,"steps":[{"result":{"duration":5993347,"status":"passed"},"name":"the account balance is 100","keyword":"Given ","line":8,"match":{"arguments":[{"val":"100","offset":23}],"location":"ATMScenario.createAccount(int)"},"matchedColumns":[0]},{"result":{"duration":156728,"status":"passed"},"name":"the card is valid","keyword":"And ","line":9,"match":{"location":"ATMScenario.createCreditCard()"}},{"result":{"duration":57405,"status":"passed"},"name":"the machine contains 100","keyword":"And ","line":10,"match":{"arguments":[{"val":"100","offset":21}],"location":"ATMScenario.createATM(int)"},"matchedColumns":[1]},{"result":{"duration":153430,"status":"passed"},"name":"the Account Holder requests 20","keyword":"When ","line":11,"match":{"arguments":[{"val":"20","offset":28}],"location":"ATMScenario.requestMoney(int)"},"matchedColumns":[2]},{"result":{"duration":182154,"status":"passed"},"name":"the ATM should dispense 20","keyword":"Then ","line":12,"match":{"arguments":[{"val":"20","offset":24}],"location":"ATMScenario.checkMoney(int)"},"matchedColumns":[3]},{"result":{"duration":76431,"status":"passed"},"name":"the account balance should be 80","keyword":"And ","line":13,"match":{"arguments":[{"val":"80","offset":30}],"location":"ATMScenario.checkBalance(int)"},"matchedColumns":[4]},{"result":{"duration":52625,"status":"passed"},"name":"the card should be returned","keyword":"And ","line":14,"match":{"location":"ATMScenario.cardShouldBeReturned()"}}],"type":"scenario"},{"id":"account-holder-withdraws-cash;account-has-sufficient-funds;;3","tags":[{"name":"@v1.0","line":1},{"name":"@prod","line":1},{"name":"@mmf","line":1}],"description":"","name":"Account has sufficient funds","keyword":"Scenario Outline","line":19,"steps":[{"result":{"duration":50600,"status":"passed"},"name":"the account balance is 100","keyword":"Given ","line":8,"match":{"arguments":[{"val":"100","offset":23}],"location":"ATMScenario.createAccount(int)"},"matchedColumns":[0]},{"result":{"duration":30583,"status":"passed"},"name":"the card is valid","keyword":"And ","line":9,"match":{"location":"ATMScenario.createCreditCard()"}},{"result":{"duration":36983,"status":"passed"},"name":"the machine contains 100","keyword":"And ","line":10,"match":{"arguments":[{"val":"100","offset":21}],"location":"ATMScenario.createATM(int)"},"matchedColumns":[1]},{"result":{"duration":71842,"status":"passed"},"name":"the Account Holder requests 30","keyword":"When ","line":11,"match":{"arguments":[{"val":"30","offset":28}],"location":"ATMScenario.requestMoney(int)"},"matchedColumns":[2]},{"result":{"duration":38942,"status":"passed"},"name":"the ATM should dispense 30","keyword":"Then ","line":12,"match":{"arguments":[{"val":"30","offset":24}],"location":"ATMScenario.checkMoney(int)"},"matchedColumns":[3]},{"result":{"duration":50949,"status":"passed"},"name":"the account balance should be 70","keyword":"And ","line":13,"match":{"arguments":[{"val":"70","offset":30}],"location":"ATMScenario.checkBalance(int)"},"matchedColumns":[4]},{"result":{"duration":23797,"status":"passed"},"name":"the card should be returned","keyword":"And ","line":14,"match":{"location":"ATMScenario.cardShouldBeReturned()"}}],"type":"scenario"},{"id":"account-holder-withdraws-cash;account-has-sufficient-funds;;4","tags":[{"name":"@v1.0","line":1},{"name":"@prod","line":1},{"name":"@mmf","line":1}],"description":"","name":"Account has sufficient funds","keyword":"Scenario Outline","line":20,"steps":[{"result":{"duration":50160,"status":"passed"},"name":"the account balance is 100","keyword":"Given ","line":8,"match":{"arguments":[{"val":"100","offset":23}],"location":"ATMScenario.createAccount(int)"},"matchedColumns":[0]},{"result":{"duration":30578,"status":"passed"},"name":"the card is valid","keyword":"And ","line":9,"match":{"location":"ATMScenario.createCreditCard()"}},{"result":{"duration":37521,"status":"passed"},"name":"the machine contains 100","keyword":"And ","line":10,"match":{"arguments":[{"val":"100","offset":21}],"location":"ATMScenario.createATM(int)"},"matchedColumns":[1]},{"result":{"duration":70219,"status":"passed"},"name":"the Account Holder requests 1","keyword":"When ","line":11,"match":{"arguments":[{"val":"1","offset":28}],"location":"ATMScenario.requestMoney(int)"},"matchedColumns":[2]},{"result":{"duration":37263,"status":"passed"},"name":"the ATM should dispense 1","keyword":"Then ","line":12,"match":{"arguments":[{"val":"1","offset":24}],"location":"ATMScenario.checkMoney(int)"},"matchedColumns":[3]},{"result":{"duration":50476,"status":"passed"},"name":"the account balance should be 99","keyword":"And ","line":13,"match":{"arguments":[{"val":"99","offset":30}],"location":"ATMScenario.checkBalance(int)"},"matchedColumns":[4]},{"result":{"duration":23662,"status":"passed"},"name":"the card should be returned","keyword":"And ","line":14,"match":{"location":"ATMScenario.cardShouldBeReturned()"}}],"type":"scenario"}],"uri":"ATM.feature"}][0];
+        var errorIndex=1;
+        report.formatDescription=function() {
+            return function(description, render) {
+                return '<dl><dd>'+render(description).replace(/\n/g,"</dd><dd>")+'</dd></dl>';
+            }
+        };
+        report.isScenarioOutline=function() { return this.type=='scenario_outline'; };         
+        report.hasErrors=function() { return this.result && this.result.error_message; };
+        report.highlightStep=function() { 
+            var res = this.name.replace('>','&gt;</b>').replace('<','<b>&lt;');
+            if(this.match && this.match.arguments){
+                var val = this.match.arguments[0].val;
+                var offset = this.match.arguments[0].offset;
+                res=this.name.substr(0, offset)+'<b>'+val+'</b>';
+                if(this.name.length>(offset+val.length)){
+                    res+=this.name.substr(offset+val.length);
+                }                                  
+            }
+            return res;
+        };      
+        report.errorDetail=function() { 
+            var errorDetail=$('#error'+errorIndex).html();
+            errorIndex++;
+            return errorDetail;
+        };
+        report.totalElapsedTime=function() {
+            if(this.type=='scenario'){
+                var duration = 10;
+                jQuery.each(this.steps, function() {
+                    if(this.result){duration+=this.result.duration;}
+                });
+                // duration is reported in nanos
+                duration = (duration/1000000).toFixed(2);
+                if(!isNaN(duration)){
+	                if(duration>1000){
+	                    duration=(duration/1000).toFixed(1);
+	                    return '<small><i>(in '+duration+' s.)</i></small>';
+	                }else{
+	                    return '<small><i>(in '+duration+' ms.)</i></small>';
+	                }
+                }                
+            }
+            return '';
+        };
+        report.durationInMillis=function() {             
+            if(this.result){                
+                // duration is reported in nanos
+                var duration = (this.result.duration/1000000).toFixed(2);
+                if(!isNaN(duration)){  
+                    return '<small><i>(in '+duration+' ms.)</i></small>';
+                }
+            }
+            return '';
+        };   
+        console.log(report);        
+		$('#result').append(ich.executionResult(report));                
+    })
+	</script> 
+    </body>
+</html>

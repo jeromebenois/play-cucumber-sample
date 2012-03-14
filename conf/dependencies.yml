@@ -1,0 +1,12 @@
+# Application dependencies
+
+require:
+    - play
+    - play -> cucumber 0.1
+
+repositories: 
+    - maven-local: 
+        type: iBiblio
+        root: "file:////${user.home}/.m2/repository/"
+        contains: 
+            - info.cukes
