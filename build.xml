@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="cukes">
+
+    <property environment="env"/>
+    <property name="play.path" value="${env.PLAY_PATH}"/>
+    <import file="${play.path}/resources/application-build.xml"/>
+
+    <target name="cukes" description="Run the Cucumber tests">
+	<!-- Run cukes command and check failures on result -->
+        <play-python command="cukes"/>
+ 	<fail message="There were test failures.">
+            <condition>
+		<resourcecontains resource="${basedir}/test-result/cucumber/junit-report.xml" substring=".failed"/>
+            </condition>
+        </fail>
+    </target>
+
+</project>
